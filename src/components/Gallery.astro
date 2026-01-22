@@ -1,0 +1,25 @@
+---
+const images = [
+  { src: "https://images.unsplash.com/photo-1581579185169-7b6f0f7b8e46?auto=format&fit=crop&w=1200&q=80", alt: "Clean living room" },
+  { src: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1200&q=80", alt: "Clean kitchen" },
+  { src: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80", alt: "Clean bathroom" },
+];
+---
+
+<section class="bg-gray-50">
+  <div class="mx-auto max-w-6xl px-4 py-16">
+    <div class="max-w-2xl">
+      <h2 class="text-3xl font-bold tracking-tight">Before & after</h2>
+      <p class="mt-2 text-gray-600">Swap these for real photos as soon as you have them.</p>
+    </div>
+
+    <div class="mt-10 grid gap-6 md:grid-cols-3">
+      {images.map((img) => (
+        <figure class="overflow-hidden rounded-2xl border bg-white">
+          <img src={img.src} alt={img.alt} class="h-64 w-full object-cover" loading="lazy" />
+          <figcaption class="p-4 text-sm text-gray-600">{img.alt}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

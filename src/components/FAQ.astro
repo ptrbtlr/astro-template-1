@@ -1,0 +1,26 @@
+---
+const faqs = [
+  { q: "Do you bring supplies?", a: "Yes — we bring supplies and equipment. If you prefer specific products, tell us in your request." },
+  { q: "How do pricing and quotes work?", a: "We quote based on home size, service type, and condition. Request a quote and we’ll reply quickly." },
+  { q: "Are you pet-friendly?", a: "Absolutely. Just let us know if pets are anxious so we can plan around them." },
+  { q: "What if I need to reschedule?", a: "No problem — give us as much notice as possible and we’ll find a new time." },
+];
+---
+
+<section class="mx-auto max-w-6xl px-4 py-16">
+  <div class="max-w-2xl">
+    <h2 class="text-3xl font-bold tracking-tight">FAQ</h2>
+    <p class="mt-2 text-gray-600">Quick answers to common questions.</p>
+  </div>
+
+  <div class="mt-10 grid gap-4">
+    {faqs.map((f) => (
+      <details class="rounded-2xl border p-5">
+        <summary class="cursor-pointer list-none font-semibold">
+          {f.q}
+        </summary>
+        <p class="mt-3 text-sm text-gray-600">{f.a}</p>
+      </details>
+    ))}
+  </div>
+</section>

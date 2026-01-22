@@ -1,0 +1,24 @@
+---
+const steps = [
+  { title: "Request a quote", desc: "Tell us your home size, service type, and preferred dates." },
+  { title: "Confirm details", desc: "We reply quickly to confirm scope, price, and schedule." },
+  { title: "We clean — you relax", desc: "Our team arrives on time and leaves your space spotless." },
+];
+---
+
+<section class="mx-auto max-w-6xl px-4 py-16">
+  <div class="max-w-2xl">
+    <h2 class="text-3xl font-bold tracking-tight">How it works</h2>
+    <p class="mt-2 text-gray-600">Simple, reliable, and easy to schedule.</p>
+  </div>
+
+  <div class="mt-10 grid gap-6 md:grid-cols-3">
+    {steps.map((s, idx) => (
+      <div class="rounded-2xl border p-6">
+        <p class="text-sm font-semibold text-gray-500">Step {idx + 1}</p>
+        <h3 class="mt-2 text-lg font-semibold">{s.title}</h3>
+        <p class="mt-2 text-sm text-gray-600">{s.desc}</p>
+      </div>
+    ))}
+  </div>
+</section>
