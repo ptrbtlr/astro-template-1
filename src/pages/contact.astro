@@ -1,0 +1,187 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { site } from "../data/site.config";
+---
+
+<Layout
+  title={`Contact ${site.business.name} | ${site.business.address}`}
+  description={`Contact ${site.business.name} for a fast quote in ${site.business.address}.`}
+>
+  <section class="mx-auto max-w-6xl px-4 py-14">
+    <div class="max-w-2xl">
+      <p class="text-sm font-semibold text-gray-600">
+        {site.business.name} • {site.business.address}
+      </p>
+      <h1 class="mt-3 text-4xl font-extrabold tracking-tight md:text-5xl">
+        Contact
+      </h1>
+      <p class="mt-4 text-lg text-gray-600">
+        Need a quote or have a question? Call, email, or send a message below.
+      </p>
+
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a class="rounded-lg bg-gray-900 px-5 py-3 font-semibold text-white hover:bg-gray-800" href={site.cta.secondaryHref}>
+          {site.cta.secondaryText}
+        </a>
+        <a class="rounded-lg border px-5 py-3 font-semibold hover:bg-gray-50" href={`mailto:${site.business.email}`}>
+          Email us
+        </a>
+        <a class="rounded-lg border px-5 py-3 font-semibold hover:bg-gray-50" href="/#quote">
+          Get a quote
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 pb-16">
+    <div class="grid gap-10 md:grid-cols-2 md:items-start">
+      <!-- Contact form -->
+      <div class="rounded-2xl border p-6 md:p-8">
+        <h2 class="text-2xl font-bold tracking-tight">Send a message</h2>
+        <p class="mt-2 text-gray-600">
+          We usually respond within one business day.
+        </p>
+
+        <form
+          class="mt-6 grid gap-4"
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          action="/success"
+        >
+          <!-- required for Netlify -->
+          <input type="hidden" name="form-name" value="contact" />
+
+          <!-- honeypot (spam trap) -->
+          <p class="hidden">
+            <label>
+              Don’t fill this out if you’re human: <input name="bot-field" />
+            </label>
+          </p>
+
+          <div class="grid gap-4 md:grid-cols-2">
+            <label class="grid gap-1">
+              <span class="text-sm font-semibold">Name</span>
+              <input
+                class="rounded-lg border px-4 py-3"
+                name="name"
+                placeholder="Jane Doe"
+                required
+                autocomplete="name"
+              />
+            </label>
+
+            <label class="grid gap-1">
+              <span class="text-sm font-semibold">Phone</span>
+              <input
+                class="rounded-lg border px-4 py-3"
+                name="phone"
+                placeholder="(512) 555-0123"
+                autocomplete="tel"
+              />
+            </label>
+          </div>
+
+          <label class="grid gap-1">
+            <span class="text-sm font-semibold">Email</span>
+            <input
+              class="rounded-lg border px-4 py-3"
+              type="email"
+              name="email"
+              placeholder="jane@email.com"
+              autocomplete="email"
+            />
+          </label>
+
+          <label class="grid gap-1">
+            <span class="text-sm font-semibold">Subject</span>
+            <input
+              class="rounded-lg border px-4 py-3"
+              name="subject"
+              placeholder="Quote / Scheduling / General question"
+            />
+          </label>
+
+          <label class="grid gap-1">
+            <span class="text-sm font-semibold">Message</span>
+            <textarea
+              class="rounded-lg border px-4 py-3"
+              name="message"
+              rows="6"
+              placeholder="Tell us what you need, preferred dates, and any details…"
+              required
+            />
+          </label>
+
+          <button class="rounded-lg bg-gray-900 px-5 py-3 font-semibold text-white hover:bg-gray-800">
+            Send message
+          </button>
+
+          <p class="text-xs text-gray-500">
+            By submitting, you agree to be contacted about your request.
+          </p>
+        </form>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="space-y-6">
+        <div class="rounded-2xl border p-6">
+          <h2 class="text-lg font-semibold">Contact details</h2>
+
+          <div class="mt-4 space-y-3 text-sm">
+            <p class="text-gray-700">
+              <span class="font-semibold">Phone:</span>{" "}
+              <a class="underline underline-offset-4" href={site.cta.secondaryHref}>
+                {site.business.phone}
+              </a>
+            </p>
+            <p class="text-gray-700">
+              <span class="font-semibold">Email:</span>{" "}
+              <a class="underline underline-offset-4" href={`mailto:${site.business.email}`}>
+                {site.business.email}
+              </a>
+            </p>
+            <p class="text-gray-700">
+              <span class="font-semibold">Location:</span> {site.business.address}
+            </p>
+          </div>
+
+          <div class="mt-6 rounded-xl bg-gray-50 p-4">
+            <p class="text-sm font-semibold text-gray-700">Service areas</p>
+            <div class="mt-3 flex flex-wrap gap-2">
+              {site.serviceAreas.map((a) => (
+                <span class="rounded-full border bg-white px-3 py-1 text-xs">{a}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border bg-gray-50 p-6">
+          <h2 class="text-lg font-semibold">Want a quote?</h2>
+          <p class="mt-2 text-sm text-gray-600">
+            For fastest service, request a quote and include the size of your home (beds/baths) and the service you want.
+          </p>
+
+          <div class="mt-4 flex flex-wrap gap-3">
+            <a class="rounded-lg bg-gray-900 px-5 py-3 font-semibold text-white hover:bg-gray-800" href="/#quote">
+              {site.cta.primaryText}
+            </a>
+            <a class="rounded-lg border px-5 py-3 font-semibold hover:bg-gray-100" href={site.cta.secondaryHref}>
+              {site.cta.secondaryText}
+            </a>
+          </div>
+        </div>
+
+        <!-- Optional map placeholder -->
+        <div class="rounded-2xl border p-6">
+          <h2 class="text-lg font-semibold">Find us</h2>
+          <p class="mt-2 text-sm text-gray-600">
+            Add a Google Map embed here later. For now, this makes the page feel “complete.”
+          </p>
+          <div class="mt-4 aspect-video w-full rounded-xl bg-gray-200"></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Layout>

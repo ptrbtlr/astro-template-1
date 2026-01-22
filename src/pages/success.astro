@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { site } from "../data/site.config";
+---
+
+<Layout title="Thanks! We got your request" description="Your request was submitted successfully.">
+  <section class="mx-auto max-w-3xl px-4 py-20">
+    <div class="rounded-2xl border p-10">
+      <h1 class="text-3xl font-bold tracking-tight">Thanks — we got it ✅</h1>
+      <p class="mt-3 text-gray-600">
+        We’ll reply as soon as we can. If it’s urgent, call us:
+        <a class="ml-1 font-semibold underline underline-offset-4" href={site.cta.secondaryHref}>
+          {site.business.phone}
+        </a>
+      </p>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a class="rounded-lg bg-gray-900 px-5 py-3 font-semibold text-white hover:bg-gray-800" href="/">
+          Back to home
+        </a>
+        <a class="rounded-lg border px-5 py-3 font-semibold hover:bg-gray-50" href="/services">
+          View services
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
